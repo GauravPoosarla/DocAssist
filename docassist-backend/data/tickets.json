@@ -579,6 +579,486 @@
     "id": "TKT-1754541000020",
     "title": "Add estimated delivery date to confirmation page",
     "description": "Customers couldn’t see expected delivery date. Now added ETA from ShippingService.",
+    "status": "processed",
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Introduced a new enhancement to improve functionality.",
+      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "keywords": [
+        "Add",
+        "estimated",
+        "delivery"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754570520018",
+    "title": "Resolve crash on product detail load",
+    "description": "Crash caused by missing image asset on some products.",
+    "status": "processed",
+    "ai": {
+      "type": "Bug",
+      "summary": "Resolved a bug affecting system behavior.",
+      "doc_suggestion": "Update 'Known Issues' section to reflect the fix.",
+      "keywords": [
+        "Resolve",
+        "crash",
+        "on"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754570760018",
+    "title": "Resolve crash on product detail load",
+    "description": "Crash caused by missing image asset on some products.",
+    "status": "processed",
+    "ai": {
+      "type": "Bug",
+      "summary": "Resolved a bug affecting system behavior.",
+      "doc_suggestion": "Update 'Known Issues' section to reflect the fix.",
+      "keywords": [
+        "Resolve",
+        "crash",
+        "on"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754570880016",
+    "title": "Fix null pointer exception in cart module",
+    "description": "App was crashing due to null product reference in CartService.",
+    "status": "processed",
+    "ai": {
+      "type": "Bug",
+      "summary": "Resolved a bug affecting system behavior.",
+      "doc_suggestion": "Update 'Known Issues' section to reflect the fix.",
+      "keywords": [
+        "Fix",
+        "null",
+        "pointer"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754571000014",
+    "title": "Add estimated delivery date to confirmation page",
+    "description": "Customers couldn’t see expected delivery date. Now added ETA from ShippingService.",
+    "status": "processed",
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Introduced a new enhancement to improve functionality.",
+      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "keywords": [
+        "Add",
+        "estimated",
+        "delivery"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754571120014",
+    "title": "Enable discount coupon in checkout",
+    "description": "Added support for applying discount coupons during checkout.",
+    "status": "processed",
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Introduced a new enhancement to improve functionality.",
+      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "keywords": [
+        "Enable",
+        "discount",
+        "coupon"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754571240013",
+    "title": "Add phone number validation on registration",
+    "description": "Implemented front-end validation for phone numbers during signup.",
+    "status": "processed",
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Introduced a new enhancement to improve functionality.",
+      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "keywords": [
+        "Add",
+        "phone",
+        "number"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754571360014",
+    "title": "Fix null pointer exception in cart module",
+    "description": "App was crashing due to null product reference in CartService.",
+    "status": "processed",
+    "ai": {
+      "type": "Bug",
+      "summary": "Resolved a bug affecting system behavior.",
+      "doc_suggestion": "Update 'Known Issues' section to reflect the fix.",
+      "keywords": [
+        "Fix",
+        "null",
+        "pointer"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754571480010",
+    "title": "Enable discount coupon in checkout",
+    "description": "Added support for applying discount coupons during checkout.",
+    "status": "processed",
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Introduced a new enhancement to improve functionality.",
+      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "keywords": [
+        "Enable",
+        "discount",
+        "coupon"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754571600019",
+    "title": "Add phone number validation on registration",
+    "description": "Implemented front-end validation for phone numbers during signup.",
+    "status": "processed",
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Introduced a new enhancement to improve functionality.",
+      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "keywords": [
+        "Add",
+        "phone",
+        "number"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754571720045",
+    "title": "Resolve crash on product detail load",
+    "description": "Crash caused by missing image asset on some products.",
+    "status": "processed",
+    "ai": {
+      "type": "Bug",
+      "summary": "Resolved a bug affecting system behavior.",
+      "doc_suggestion": "Update 'Known Issues' section to reflect the fix.",
+      "keywords": [
+        "Resolve",
+        "crash",
+        "on"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754571840008",
+    "title": "Resolve crash on product detail load",
+    "description": "Crash caused by missing image asset on some products.",
+    "status": "processed",
+    "ai": {
+      "type": "Bug",
+      "summary": "Resolved a bug affecting system behavior.",
+      "doc_suggestion": "Update 'Known Issues' section to reflect the fix.",
+      "keywords": [
+        "Resolve",
+        "crash",
+        "on"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754571960016",
+    "title": "Resolve crash on product detail load",
+    "description": "Crash caused by missing image asset on some products.",
+    "status": "processed",
+    "ai": {
+      "type": "Bug",
+      "summary": "Resolved a bug affecting system behavior.",
+      "doc_suggestion": "Update 'Known Issues' section to reflect the fix.",
+      "keywords": [
+        "Resolve",
+        "crash",
+        "on"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754572080003",
+    "title": "Enable discount coupon in checkout",
+    "description": "Added support for applying discount coupons during checkout.",
+    "status": "processed",
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Introduced a new enhancement to improve functionality.",
+      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "keywords": [
+        "Enable",
+        "discount",
+        "coupon"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754572200014",
+    "title": "Fix null pointer exception in cart module",
+    "description": "App was crashing due to null product reference in CartService.",
+    "status": "processed",
+    "ai": {
+      "type": "Bug",
+      "summary": "Resolved a bug affecting system behavior.",
+      "doc_suggestion": "Update 'Known Issues' section to reflect the fix.",
+      "keywords": [
+        "Fix",
+        "null",
+        "pointer"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754572320007",
+    "title": "Add phone number validation on registration",
+    "description": "Implemented front-end validation for phone numbers during signup.",
+    "status": "processed",
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Introduced a new enhancement to improve functionality.",
+      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "keywords": [
+        "Add",
+        "phone",
+        "number"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754572440004",
+    "title": "Add phone number validation on registration",
+    "description": "Implemented front-end validation for phone numbers during signup.",
+    "status": "processed",
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Introduced a new enhancement to improve functionality.",
+      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "keywords": [
+        "Add",
+        "phone",
+        "number"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754572560010",
+    "title": "Add phone number validation on registration",
+    "description": "Implemented front-end validation for phone numbers during signup.",
+    "status": "processed",
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Introduced a new enhancement to improve functionality.",
+      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "keywords": [
+        "Add",
+        "phone",
+        "number"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754572680015",
+    "title": "Enable discount coupon in checkout",
+    "description": "Added support for applying discount coupons during checkout.",
+    "status": "processed",
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Introduced a new enhancement to improve functionality.",
+      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "keywords": [
+        "Enable",
+        "discount",
+        "coupon"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754572920016",
+    "title": "Add estimated delivery date to confirmation page",
+    "description": "Customers couldn’t see expected delivery date. Now added ETA from ShippingService.",
+    "status": "processed",
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Introduced a new enhancement to improve functionality.",
+      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "keywords": [
+        "Add",
+        "estimated",
+        "delivery"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754573280014",
+    "title": "Add estimated delivery date to confirmation page",
+    "description": "Customers couldn’t see expected delivery date. Now added ETA from ShippingService.",
+    "status": "processed",
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Introduced a new enhancement to improve functionality.",
+      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "keywords": [
+        "Add",
+        "estimated",
+        "delivery"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754573520015",
+    "title": "Resolve crash on product detail load",
+    "description": "Crash caused by missing image asset on some products.",
+    "status": "processed",
+    "ai": {
+      "type": "Bug",
+      "summary": "Resolved a bug affecting system behavior.",
+      "doc_suggestion": "Update 'Known Issues' section to reflect the fix.",
+      "keywords": [
+        "Resolve",
+        "crash",
+        "on"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754573640012",
+    "title": "Fix null pointer exception in cart module",
+    "description": "App was crashing due to null product reference in CartService.",
+    "status": "processed",
+    "ai": {
+      "type": "Bug",
+      "summary": "Resolved a bug affecting system behavior.",
+      "doc_suggestion": "Update 'Known Issues' section to reflect the fix.",
+      "keywords": [
+        "Fix",
+        "null",
+        "pointer"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754573760016",
+    "title": "Add phone number validation on registration",
+    "description": "Implemented front-end validation for phone numbers during signup.",
+    "status": "processed",
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Introduced a new enhancement to improve functionality.",
+      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "keywords": [
+        "Add",
+        "phone",
+        "number"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754573880014",
+    "title": "Add estimated delivery date to confirmation page",
+    "description": "Customers couldn’t see expected delivery date. Now added ETA from ShippingService.",
+    "status": "processed",
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Introduced a new enhancement to improve functionality.",
+      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "keywords": [
+        "Add",
+        "estimated",
+        "delivery"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754574000015",
+    "title": "Fix null pointer exception in cart module",
+    "description": "App was crashing due to null product reference in CartService.",
+    "status": "processed",
+    "ai": {
+      "type": "Bug",
+      "summary": "Resolved a bug affecting system behavior.",
+      "doc_suggestion": "Update 'Known Issues' section to reflect the fix.",
+      "keywords": [
+        "Fix",
+        "null",
+        "pointer"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754574120016",
+    "title": "Fix null pointer exception in cart module",
+    "description": "App was crashing due to null product reference in CartService.",
+    "status": "processed",
+    "ai": {
+      "type": "Bug",
+      "summary": "Resolved a bug affecting system behavior.",
+      "doc_suggestion": "Update 'Known Issues' section to reflect the fix.",
+      "keywords": [
+        "Fix",
+        "null",
+        "pointer"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754574240002",
+    "title": "Enable discount coupon in checkout",
+    "description": "Added support for applying discount coupons during checkout.",
+    "status": "processed",
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Introduced a new enhancement to improve functionality.",
+      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "keywords": [
+        "Enable",
+        "discount",
+        "coupon"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754574360004",
+    "title": "Resolve crash on product detail load",
+    "description": "Crash caused by missing image asset on some products.",
+    "status": "processed",
+    "ai": {
+      "type": "Bug",
+      "summary": "Resolved a bug affecting system behavior.",
+      "doc_suggestion": "Update 'Known Issues' section to reflect the fix.",
+      "keywords": [
+        "Resolve",
+        "crash",
+        "on"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754574480015",
+    "title": "Enable discount coupon in checkout",
+    "description": "Added support for applying discount coupons during checkout.",
+    "status": "processed",
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Introduced a new enhancement to improve functionality.",
+      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "keywords": [
+        "Enable",
+        "discount",
+        "coupon"
+      ]
+    }
+  },
+  {
+    "id": "TKT-1754574600021",
+    "title": "Resolve crash on product detail load",
+    "description": "Crash caused by missing image asset on some products.",
     "status": "pending"
   }
 ]

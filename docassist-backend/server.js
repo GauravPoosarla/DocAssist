@@ -1,6 +1,7 @@
 const express = require('express');
 const cron = require('node-cron');
 const dotenv = require('dotenv');
+const mongoose = require('mongoose');
 
 dotenv.config();
 
@@ -8,9 +9,11 @@ const fetchTickets = require('./cron/fetchTickets');
 const { fetchIssues } = require('./services/githubService');
 const processPendingTickets = require('./cron/processTickets');
 
-const ticketsRoute = require('./routes/tickets');
-const notionRoute = require('./routes/notion');
+const ticketsRoute = require('./routes/ticketRoutes');
+const notionRoute = require('./routes/notionRoutes');
 
+const db = process.env.DB_URL;
+mongoose.connect(db).then(()=> console.log('db is connected')).catch(err => console.log('unable to connect db'));
 const app = express();
 app.use(express.json());
 
