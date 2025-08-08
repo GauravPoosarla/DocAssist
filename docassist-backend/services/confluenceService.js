@@ -17,8 +17,7 @@ async function fetchConfluencePages({ domain, email, apiToken, spaceKey }) {
     title: page.title,
     version: page.version.number,
     content: page.body?.storage?.value || "",
-    link: `https://${domain}.atlassian.net/wiki/spaces/${spaceKey}/pages/${page.id}`,
-    status: "fetched"
+    link: `https://${domain}.atlassian.net/wiki/spaces/${spaceKey}/pages/${page.id}`
   }));
 
   return pages;

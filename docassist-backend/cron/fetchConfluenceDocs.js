@@ -39,7 +39,7 @@ async function fetchAndStoreConfluenceDocs() {
           id: page.id,
           title: summaryData.title || page.title,
           summary: summaryData.summary || "",
-          status: "processed"
+          link: page.link
         });
       }
     }
