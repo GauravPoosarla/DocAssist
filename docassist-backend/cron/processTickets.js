@@ -17,26 +17,18 @@ async function processPendingTickets() {
     return;
   }
 
-  let updated = false;
-
   for (let ticket of tickets) {
     if (ticket.status === 'pending') {
       try {
-        await Ticket.findByIdAndDelete(ticket._id);
         const ai = await classifyTicket(ticket);
-        ticket.ai = ai;
         ticket.status = 'processed';
-        updated = true;
         console.log(`🤖 Processed ticket ${ticket.id}`);
+        console.log(ticket);
+        await Ticket.findByIdAndUpdate({_id: ticket._id}, { $set: { ai, status: ticket.status} }, { new: true });
       } catch (err) {
         console.error(`Failed to classify ticket ${ticket.id}`, err);
       }
     }
-  }
-
-  if (updated) {
-    // fs.writeFileSync(filePath, JSON.stringify(tickets, null, 2));
-    await Ticket.create(tickets);
   }
 
   return tickets;
