@@ -1,6 +1,6 @@
 const Ticket = require("../models/ticketModel");
 const {findRelevantDocsForTicket} = require("../services/llmService");
-const {updateConfluencePageWithTicket} = require("../services/confluenceService");
+const {updateConfluencePageWithTicket, fetchConfluencePages} = require("../services/confluenceService");
 
 exports.create_tickets = async (req, res) => {
     try{

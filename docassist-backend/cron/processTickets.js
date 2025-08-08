@@ -3,7 +3,7 @@ const path = require('path');
 const { classifyTicket } = require('../services/llmService');
 const Ticket = require("../models/ticketModel");
 
-const filePath = path.join(__dirname, '../data/tickets.json');
+// const filePath = path.join(__dirname, '../data/tickets.json');
 
 async function processPendingTickets() {
   let tickets = [];

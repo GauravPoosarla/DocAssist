@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const Document = require("../models/documentModel");
 const { fetchConfluencePages } = require("../services/confluenceService");
 const { summarizeConfluenceDoc } = require("../services/llmService");
 
@@ -25,7 +26,8 @@ async function fetchAndStoreConfluenceDocs() {
   try {
     const pages = await fetchConfluencePages(config);
 
-    const existing = loadDocs();
+    // const existing = loadDocs();
+    const existing = await Document.find();
     const existingIds = new Set(existing.map(d => d.id));
 
     const processedDocs = [...existing];
@@ -44,7 +46,8 @@ async function fetchAndStoreConfluenceDocs() {
       }
     }
 
-    saveDocs(processedDocs);
+    // saveDocs(processedDocs);
+    await Document.create(processedDocs);
 
     console.log(`Total docs stored: ${processedDocs.length}`);
   } catch (err) {

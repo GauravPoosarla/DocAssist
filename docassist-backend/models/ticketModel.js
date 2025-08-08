@@ -31,6 +31,18 @@ const ticketSchema = new mongoose.Schema({
         type: Array,
         required: false
     },
+    comments: {
+        type: Array,
+        required: false
+    },
+    jira_status: {
+        type: String,
+        required: false
+    },
+    type: {
+        type: String,
+        required: false
+    },
     ai: aiSchema
 },
 {

@@ -10,7 +10,7 @@ const config = {
   projectKey: process.env.JIRA_PROJECT_KEY || "DOCASSIST",
 };
 
-const TICKETS_PATH = path.join(__dirname, "../data/tickets.json");
+// const TICKETS_PATH = path.join(__dirname, "../data/tickets.json");
 
 /* function loadTickets() {
   if (!fs.existsSync(TICKETS_PATH)) return [];

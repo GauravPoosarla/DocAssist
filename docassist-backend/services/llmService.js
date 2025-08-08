@@ -2,6 +2,7 @@ const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
 const Tesseract = require("tesseract.js");
+const Document = require("../models/documentModel");
 require("dotenv").config();
 
 async function fetchTextAttachmentContent(contentUrl, auth) {
@@ -167,9 +168,10 @@ ${doc.content}
 }
 
 async function findRelevantDocsForTicket(ticket) {
-  const DOCS_PATH = path.join(__dirname, "../data/confluence_docs.json");
-  const docs = JSON.parse(fs.readFileSync(DOCS_PATH, "utf-8"));
+  // const DOCS_PATH = path.join(__dirname, "../data/confluence_docs.json");
+  // const docs = JSON.parse(fs.readFileSync(DOCS_PATH, "utf-8"));
 
+  const docs = await Document.find();
   const docsList = docs.map((doc, i) => 
     `${i+1}. ID: ${doc.id}, Title: "${doc.title}", Summary: "${doc.summary}"`
   ).join("\n");

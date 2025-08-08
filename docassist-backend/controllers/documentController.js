@@ -1,8 +1,9 @@
 const Document = require("../models/documentModel");
+const {fetchAndStoreConfluenceDocs} = require("../cron/fetchConfluenceDocs");
 
 exports.create_documents = async (req,res) => {  
     try{
-        await Document.create(req.body);
+        await fetchAndStoreConfluenceDocs();
         return res.status(200).json({
             status: 'success',
             message: 'Document data from confluence stored successfully'
@@ -18,7 +19,7 @@ exports.create_documents = async (req,res) => {
 
 exports.get_documents = async (req,res) => {
     try{
-        const tickets = await Document.find({status: {$ne: 'pending'}});
+        const tickets = await Document.find();
         return res.status(200).json({
             status: 'success',
             data: tickets
