@@ -1,11 +1,22 @@
 const Ticket = require("../models/ticketModel");
+const fs = require('fs');
 
 exports.create_ticket = async (req, res) => {
-    let ticket = {
-        ticket_id: 'JIRA-02',
-        data: "Unprocessed data",
-        status: "Unprocessed"
-    }
+    let ticket = [{
+        id: 'JIRA-03',
+        // data: "Unprocessed data",
+        status: 123,
+        ai: {type: "hello"}
+    },
+    {
+        id: 'JIRA-04',
+        // data: "Unprocessed data",
+        status: "Unprocessed",
+        ai:{
+          type: "hello world"
+        }
+    }]
+
     try{
         await Ticket.create(ticket);
         return res.status(200).json({
@@ -13,15 +24,19 @@ exports.create_ticket = async (req, res) => {
             message: 'Ticket data from jira stored successfully'
         })
     }catch(err){
-        throw err;
+        return res.status(500).json({
+            status: 'fail',
+            message: 'Internal server error',
+            Error: err
+        })
     }
 }
 
-exports.get_ticket = async (req, res) => {
+exports.get_tickets = async (req, res) => {
   try {
-    const data = fs.readFileSync(filePath, 'utf8');
+    // const data = fs.readFileSync(filePath, 'utf8');
     // const tickets = JSON.parse(data);
-    const tickets = await Ticket.find({"ticket_id": "JIRA-01"});
+    const tickets = await Ticket.find();
     return res.status(200).json({
       status: 'success',
       data: tickets

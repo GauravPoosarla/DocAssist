@@ -1121,6 +1121,19 @@
     "id": "TKT-1754574600021",
     "title": "Resolve crash on product detail load",
     "description": "Crash caused by missing image asset on some products.",
-    "status": "pending"
+    "status": "processed",
+    "ai": {
+      "type": "Bug",
+      "summary": "Application crashes when loading product details due to missing image assets.",
+      "doc_suggestion": "Error handling for missing assets",
+      "keywords": [
+        "crash",
+        "product detail",
+        "missing image"
+      ],
+      "service": "catalog",
+      "impact_location": "Product detail page",
+      "is_permanent": "permanent"
+    }
   }
 ]

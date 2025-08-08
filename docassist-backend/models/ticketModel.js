@@ -1,22 +1,37 @@
 const mongoose = require('mongoose');
 
+const aiSchema = new mongoose.Schema({
+    type: String,
+    summary: String,
+    doc_suggesstion: Array,
+    keywords: Array,
+    service: String,
+    impact_location: String,
+    is_permanent: String
+});
+
 const ticketSchema = new mongoose.Schema({
-    ticket_id: {
+    id: {
         type: String,
         required: true
     },
-    data: {
+    title: {
         type: String,
-        required: true
+        required: false
     },
-    summary: {
+    description: {
         type: String,
         required: false
     },
     status: {
         type: String,
-        required: true
-    }
+        required: false
+    },
+    attachments: {
+        type: Array,
+        required: false
+    },
+    ai: aiSchema
 },
 {
     timestamps: true
