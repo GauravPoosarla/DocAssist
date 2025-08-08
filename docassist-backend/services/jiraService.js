@@ -24,7 +24,7 @@ async function fetchJiraTickets({ domain, email, apiToken, projectKey }) {
     }, "");
   }
 
-  const tickets = res.data.issues.map(issue => {
+  const tickets = await Promise.all(res.data.issues.map(async issue => {
     const description = issue.fields.description
       ? extractDescriptionText(issue.fields.description.content)
       : "No description";
@@ -45,6 +45,14 @@ async function fetchJiraTickets({ domain, email, apiToken, projectKey }) {
       created: comment.created
     })) || [];
 
+    const issueTypeUrl = `https://${domain}.atlassian.net/rest/api/3/issue/${issue.key}?fields=issuetype`;
+    const issueTypeRes = await axios.get(issueTypeUrl, {
+      headers: {
+        Authorization: `Basic ${auth}`,
+        Accept: "application/json"
+      }
+    });
+
     return {
       id: issue.key,
       title: issue.fields.summary,
@@ -52,9 +60,10 @@ async function fetchJiraTickets({ domain, email, apiToken, projectKey }) {
       comments,
       attachments,
       status: "pending",
-      jiraStatus: issue.fields.status?.name
+      jira_status: issue.fields.status?.name,
+      type: issueTypeRes.data.fields.issuetype.name,
     };
-  });
+  }));
 
   return tickets;
 }
