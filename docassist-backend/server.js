@@ -10,7 +10,6 @@ const { processPendingTickets } = require('./cron/processTickets');
 
 const ticketsRoute = require('./routes/ticketRoutes');
 const documentRoute = require('./routes/documentRoutes');
-const notionRoute = require('./routes/notionRoutes');
 
 const db = process.env.DB_URL;
 mongoose.connect(db).then(()=> console.log('db is connected')).catch(err => console.log('unable to connect db'));
@@ -19,8 +18,6 @@ app.use(express.json());
 
 app.use('/api/tickets', ticketsRoute);
 app.use('/api/documents', documentRoute);
-
-app.use('/api/notion', notionRoute);
 
 
 // cron.schedule('*/2 * * * *', async () => {

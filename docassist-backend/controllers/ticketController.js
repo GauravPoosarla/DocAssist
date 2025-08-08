@@ -1,5 +1,6 @@
 const Ticket = require("../models/ticketModel");
-const fs = require('fs');
+const {findRelevantDocsForTicket} = require("../services/llmService");
+const {updateConfluencePageWithTicket} = require("../services/confluenceService");
 
 exports.create_tickets = async (req, res) => {
     try{
@@ -37,15 +38,42 @@ exports.get_ticket_by_id = async (req,res) => {
   try{
     const id = req.params.id;
     const ticket = await Ticket.find({id});
+    const rel_docs = await findRelevantDocsForTicket(ticket[0]);
     return res.status(200).json({
       status: 'success',
-      data: ticket
+      ticket,
+      rel_docs
     });
   }catch(err){
     return res.status(500).json({
         status: 'fail',
         message: 'Internal server error',
         Error: err
+    })
+  }
+}
+
+exports.update_document = async (req, res) => {
+  try{
+    const {ticket_id, doc_id} = req.params;
+    const ticket = await Ticket.find({id: ticket_id});
+    const config = {
+      domain: process.env.CONFLUENCE_DOMAIN,
+      email: process.env.CONFLUENCE_EMAIL,
+      apiToken: process.env.CONFLUENCE_API_TOKEN,
+      spaceKey: process.env.CONFLUENCE_SPACE_KEY
+    };
+
+    await updateConfluencePageWithTicket(config, doc_id, ticket[0]);
+    return res.status(200).json({
+      status: 'success',
+      message: 'document updated successfully'
+    });
+  }catch(err){
+    return res.status(500).json({
+      status: 'fail',
+      message: 'Internal server error',
+      err
     })
   }
 }
