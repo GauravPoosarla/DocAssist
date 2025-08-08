@@ -2,13 +2,10 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const router = express.Router();
-const Ticket = require("../models/ticketModel");
-const {get_tickets, create_ticket} = require("../controllers/ticketController");
-
-const filePath = path.join(__dirname, '../data/tickets.json');
+const {get_tickets, create_tickets, get_ticket_by_id} = require("../controllers/ticketController");
 
 router.get('/', get_tickets);
-
-router.post('/' , create_ticket);
+router.get('/:id', get_ticket_by_id);
+router.post('/' , create_tickets);
 
 module.exports = router;

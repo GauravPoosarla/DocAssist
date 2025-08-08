@@ -38,6 +38,7 @@ async function fetchAndStoreJiraTickets() {
     console.log("No new tickets found.");
   }
 
+  return newOnes;
 }
 
 module.exports = { fetchAndStoreJiraTickets };

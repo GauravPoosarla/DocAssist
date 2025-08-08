@@ -38,6 +38,8 @@ async function processPendingTickets() {
     // fs.writeFileSync(filePath, JSON.stringify(tickets, null, 2));
     await Ticket.create(tickets);
   }
+
+  return tickets;
 }
 
 module.exports = {processPendingTickets};
