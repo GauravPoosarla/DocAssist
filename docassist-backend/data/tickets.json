@@ -1,146 +1,208 @@
 [
   {
-    "id": "TKT-1754491200015",
-    "title": "Add estimated delivery date to confirmation page",
-    "description": "Customers couldn’t see expected delivery date. Now added ETA from ShippingService.",
+    "id": "DOCASSIST-10",
+    "title": "Feedback email flag removal from backoffice",
+    "description": "feedback email flag is triggered for product feedback. Currently a flag is controlled in back office at SKU level to pass this into to CRMSince CRM already have logic on their end to filter products, its an overhead to maintain the flag in back officeso pls remove the flag from back office",
     "status": "processed",
+    "attachments": [],
     "ai": {
       "type": "Enhancement",
-      "summary": "Introduced a new enhancement to improve functionality.",
-      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "summary": "Removal of feedback email flag from backoffice to reduce overhead as CRM already handles product filtering.",
+      "doc_suggestion": "Backoffice configuration and CRM integration documentation",
       "keywords": [
-        "Shipping",
-        "estimated",
-        "delivery"
-      ]
+        "feedback_email_flag",
+        "backoffice",
+        "CRM_integration"
+      ],
+      "service": "catalog",
+      "impact_location": "SKU level in backoffice",
+      "is_permanent": "permanent"
     }
   },
   {
-    "id": "TKT-1754491320019",
-    "title": "Fix null pointer exception in cart module",
-    "description": "App was crashing due to null product reference in CartService.",
+    "id": "DOCASSIST-9",
+    "title": "Upload bulk option in back office for whitelisting phone numbers and agent codes",
+    "description": "currently we don't have bulk upload option for whitelisting phone number and agent code. We are creating support tickets for L1 team. But the turn around time is high since it is a P3 request. So business user want a upload button in Backoffice under store creation tab. So that we can effective do whitelisting on our own.",
     "status": "processed",
+    "attachments": [],
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Added bulk upload option for whitelisting phone numbers and agent codes in the back office under the store creation tab.",
+      "doc_suggestion": "Back office user guide, store creation section",
+      "keywords": [
+        "bulk upload",
+        "whitelisting",
+        "back office"
+      ],
+      "service": "catalog",
+      "impact_location": "Back office > Store Creation Tab",
+      "is_permanent": "permanent"
+    }
+  },
+  {
+    "id": "DOCASSIST-8",
+    "title": "incorrect error message for coupon exceed limit",
+    "description": "when user enter a coupon exceeding the coupon limit count, then system shows correct error message in cart “ Cannot add 3 coupons on the cart” but on coupon section it shows “invalid coupon code” which is incorrect. both error message in cart and coupon section has to sync. please update the error message in coupon section as same as cart error message.Please note count is configurable in backoffice",
+    "status": "processed",
+    "attachments": [],
     "ai": {
       "type": "Bug",
-      "summary": "Resolved a bug affecting system behavior.",
-      "doc_suggestion": "Update 'Known Issues' section to reflect the fix.",
+      "summary": "Incorrect error message displayed in the coupon section when exceeding the coupon limit count",
+      "doc_suggestion": "Coupon validation and error messaging",
       "keywords": [
-        "Fix",
-        "null",
-        "pointer"
-      ]
+        "coupon",
+        "error message",
+        "limit"
+      ],
+      "service": "catalog",
+      "impact_location": "coupon section",
+      "is_permanent": "permanent"
     }
   },
   {
-    "id": "TKT-1754491440010",
-    "title": "Resolve crash on product detail load",
-    "description": "Crash caused by missing image asset on some products.",
+    "id": "DOCASSIST-7",
+    "title": "Make PAN entry mandatory for all payment greater than 2 Lakh",
+    "description": "Government has made a rule for all ecommerce company to collect PAN card for bill amount greater than 2 Lakhs.Add it in payment section",
     "status": "processed",
+    "attachments": [
+      {
+        "id": "10000",
+        "filename": "seamless-mode.png",
+        "mimeType": "image/png",
+        "contentUrl": "https://samsunghack.atlassian.net/rest/api/3/attachment/content/10000"
+      }
+    ],
+    "ai": {
+      "type": "Enhancement",
+      "summary": "Mandatory PAN entry for payments exceeding 2 Lakhs",
+      "doc_suggestion": "Payment processing and tax compliance documentation",
+      "keywords": [
+        "PAN",
+        "payment",
+        "tax"
+      ],
+      "service": "payment",
+      "impact_location": "payment section",
+      "is_permanent": "permanent"
+    }
+  },
+  {
+    "id": "DOCASSIST-6",
+    "title": "Issue in inventory check logic",
+    "description": "Reference order:#123456#789012There was 2 inventory available for SKU: ABC Partner created the cart with 2 units and successfully placed order.Order created and  2 units being soft allocated now net available inventory is 0 for SKU:ABCThink if partner not able to proceed payment due to payment page error. Now net available inventory becomes zero. so when partner again tries to place order partner cant since the inventory has become zero. Solution: Check inventory during order creation (to soft allocate) but do not check inventory at payment page during the time of partner payment",
+    "status": "processed",
+    "attachments": [],
     "ai": {
       "type": "Bug",
-      "summary": "Resolved a bug affecting system behavior.",
-      "doc_suggestion": "Update 'Known Issues' section to reflect the fix.",
+      "summary": "Inventory check logic fails to allow reordering when payment fails after soft allocation",
+      "doc_suggestion": "Inventory management and order processing",
       "keywords": [
-        "Resolve",
-        "crash",
-        "on"
-      ]
+        "inventory",
+        "soft allocation",
+        "payment"
+      ],
+      "service": "fulfillment",
+      "impact_location": "Order creation and payment processing",
+      "is_permanent": "permanent"
     }
   },
   {
-    "id": "TKT-1754491560011",
-    "title": "Add phone number validation on registration",
-    "description": "Implemented front-end validation for phone numbers during signup.",
+    "id": "DOCASSIST-5",
+    "title": "Pre-reserve notification email template chnage",
+    "description": "Due to new campaign we wish to make a small change in pre reserve email notification template.It has 2 new variable voucher code and price. Pls find the attached template",
     "status": "processed",
+    "attachments": [],
     "ai": {
       "type": "Enhancement",
-      "summary": "Introduced a new enhancement to improve functionality.",
-      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "summary": "Updated pre-reserve notification email template to include new variables: voucher code and price.",
+      "doc_suggestion": "Email notification templates",
       "keywords": [
-        "Add",
-        "phone",
-        "number"
-      ]
+        "pre-reserve",
+        "email",
+        "template"
+      ],
+      "service": "fulfillment",
+      "impact_location": "Email notification system",
+      "is_permanent": "permanent"
     }
   },
   {
-    "id": "TKT-1754491680018",
-    "title": "Add phone number validation on registration",
-    "description": "Implemented front-end validation for phone numbers during signup.",
+    "id": "DOCASSIST-4",
+    "title": "Profile badge icon is  missing",
+    "description": "Steps to recreate bugs1) login to app2) hover profile icon3) profile colour and icon is missing",
     "status": "processed",
-    "ai": {
-      "type": "Enhancement",
-      "summary": "Introduced a new enhancement to improve functionality.",
-      "doc_suggestion": "Update 'Feature Overview' with new capability.",
-      "keywords": [
-        "Add",
-        "phone",
-        "number"
-      ]
-    }
-  },
-  {
-    "id": "TKT-1754493000012",
-    "title": "Fix null pointer exception in cart module",
-    "description": "App was crashing due to null product reference in CartService.",
-    "status": "processed",
+    "attachments": [],
     "ai": {
       "type": "Bug",
-      "summary": "Resolved a bug affecting system behavior.",
-      "doc_suggestion": "Update 'Known Issues' section to reflect the fix.",
+      "summary": "Profile badge icon and color are missing when hovering over the profile icon in the app.",
+      "doc_suggestion": "UI/UX documentation for profile section",
       "keywords": [
-        "Fix",
-        "null",
-        "pointer"
-      ]
+        "profile",
+        "badge",
+        "icon"
+      ],
+      "service": "frontend",
+      "impact_location": "user profile section",
+      "is_permanent": "temporary"
     }
   },
   {
-    "id": "TKT-1754493120016",
-    "title": "Add phone number validation on registration",
-    "description": "Implemented front-end validation for phone numbers during signup.",
+    "id": "DOCASSIST-3",
+    "title": "Ecommerce Purchase Journey",
+    "description": "Ecommerce purchase journey from homepage ro order thank you page",
     "status": "processed",
+    "attachments": [],
     "ai": {
       "type": "Enhancement",
-      "summary": "Introduced a new enhancement to improve functionality.",
-      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "summary": "Improvement in the e-commerce purchase journey flow from homepage to order thank you page",
+      "doc_suggestion": "Purchase Journey Documentation",
       "keywords": [
-        "Add",
-        "phone",
-        "number"
-      ]
+        "purchase_journey",
+        "ecommerce_flow"
+      ],
+      "service": "orders",
+      "impact_location": "homepage_to_thankyou_page",
+      "is_permanent": "permanent"
     }
   },
   {
-    "id": "TKT-1754493240010",
-    "title": "Add phone number validation on registration",
-    "description": "Implemented front-end validation for phone numbers during signup.",
+    "id": "DOCASSIST-2",
+    "title": "colour change for buy online pick in store orders",
+    "description": "Add one more logic for BOPIS (buy online pick up in store) colour change. Apply all usual colour validation. On top of it only for BOPIS orders Check for inventory at the physical store not online inventory, if the physical store inventory is not available then colour change should not be allowed.",
     "status": "processed",
+    "attachments": [],
     "ai": {
       "type": "Enhancement",
-      "summary": "Introduced a new enhancement to improve functionality.",
-      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "summary": "Added logic to prevent colour change for BOPIS orders if physical store inventory is unavailable.",
+      "doc_suggestion": "BOPIS order processing, colour validation, inventory check",
       "keywords": [
-        "Add",
-        "phone",
-        "number"
-      ]
+        "BOPIS",
+        "colour change",
+        "inventory check"
+      ],
+      "service": "fulfillment",
+      "impact_location": "BOPIS order processing workflow",
+      "is_permanent": "permanent"
     }
   },
   {
-    "id": "TKT-1754493360014",
-    "title": "Enable discount coupon in checkout",
-    "description": "Added support for applying discount coupons during checkout.",
+    "id": "DOCASSIST-1",
+    "title": "Address section pincode should match with GST pincode",
+    "description": "Need to add GST pincode validation in checkout page.Currently, we dont have any pincode check for delivery address section form and GST section form. We need to introduce same state pincode check for both address form section and GST form section. If same state pincode doesnt match then throw error “GST Pincode doesnt match with delivery address state’s pincode” and dont allow to proceed to payment section.",
     "status": "processed",
+    "attachments": [],
     "ai": {
       "type": "Enhancement",
-      "summary": "Introduced a new enhancement to improve functionality.",
-      "doc_suggestion": "Update 'Feature Overview' with new capability.",
+      "summary": "Added GST pincode validation to ensure matching pincodes between delivery address and GST sections during checkout.",
+      "doc_suggestion": "Checkout process, GST validation, address validation",
       "keywords": [
-        "Enable",
-        "discount",
-        "coupon"
-      ]
+        "GST",
+        "pincode",
+        "checkout"
+      ],
+      "service": "orders",
+      "impact_location": "checkout page",
+      "is_permanent": "permanent"
     }
   },
   {

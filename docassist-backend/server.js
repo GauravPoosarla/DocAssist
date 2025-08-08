@@ -5,9 +5,8 @@ const mongoose = require('mongoose');
 
 dotenv.config();
 
-const fetchTickets = require('./cron/fetchTickets');
-const { fetchIssues } = require('./services/githubService');
-const processPendingTickets = require('./cron/processTickets');
+const { fetchAndStoreJiraTickets } = require('./cron/fetchJiraTickets');
+const { processPendingTickets } = require('./cron/processTickets');
 
 const ticketsRoute = require('./routes/ticketRoutes');
 const notionRoute = require('./routes/notionRoutes');
@@ -20,11 +19,25 @@ app.use(express.json());
 app.use('/api/tickets', ticketsRoute);
 app.use('/api/notion', notionRoute);
 
-cron.schedule('*/2 * * * *', fetchTickets);
-cron.schedule('*/3 * * * *', processPendingTickets);
-cron.schedule('*/5 * * * *', fetchIssues);
+cron.schedule('*/2 * * * *', async () => {
+  try {
+    await fetchAndStoreJiraTickets();
+    console.log("Jira tickets fetch cron completed");
+  } catch (err) {
+    console.error("Jira fetch cron failed:", err.message);
+  }
+});
+
+cron.schedule('*/3 * * * *', async () => {
+  try {
+    await processPendingTickets();
+    console.log("LLM processing cron completed");
+  } catch (err) {
+    console.error("LLM processing cron failed:", err.message);
+  }
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });

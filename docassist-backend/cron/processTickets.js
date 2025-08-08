@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { classifyTicket } = require('../services/dummyLLMService');
+const { classifyTicket } = require('../services/llmService');
 
 const filePath = path.join(__dirname, '../data/tickets.json');
 
@@ -36,4 +36,4 @@ async function processPendingTickets() {
   }
 }
 
-module.exports = processPendingTickets;
+module.exports = {processPendingTickets};
