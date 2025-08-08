@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { classifyTicket } = require('../services/llmService');
+const Ticket = require("../models/ticketModel");
 
 const filePath = path.join(__dirname, '../data/tickets.json');
 
@@ -8,8 +9,9 @@ async function processPendingTickets() {
   let tickets = [];
 
   try {
-    const file = fs.readFileSync(filePath, 'utf8');
-    tickets = JSON.parse(file);
+    // const file = fs.readFileSync(filePath, 'utf8');
+    // tickets = JSON.parse(file);
+    tickets = await Ticket.find({status: "pending"});
   } catch (err) {
     console.error("Failed to read tickets:", err);
     return;
@@ -20,6 +22,7 @@ async function processPendingTickets() {
   for (let ticket of tickets) {
     if (ticket.status === 'pending') {
       try {
+        await Ticket.findByIdAndDelete(ticket._id);
         const ai = await classifyTicket(ticket);
         ticket.ai = ai;
         ticket.status = 'processed';
@@ -32,8 +35,11 @@ async function processPendingTickets() {
   }
 
   if (updated) {
-    fs.writeFileSync(filePath, JSON.stringify(tickets, null, 2));
+    // fs.writeFileSync(filePath, JSON.stringify(tickets, null, 2));
+    await Ticket.create(tickets);
   }
+
+  return tickets;
 }
 
 module.exports = {processPendingTickets};
