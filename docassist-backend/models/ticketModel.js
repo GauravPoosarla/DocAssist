@@ -13,7 +13,8 @@ const aiSchema = new mongoose.Schema({
 const ticketSchema = new mongoose.Schema({
     id: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     title: {
         type: String,
