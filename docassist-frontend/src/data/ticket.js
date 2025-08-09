@@ -1,7 +1,7 @@
 export default {
     "status": "success",
     "ticket": {
-        "_id": "689631e63fdf9fbd1f36a615",
+        "_id": "68972a04ba52ad84e7f13183",
         "id": "DOCASSIST-7",
         "title": "Make PAN entry mandatory for all payment greater than 2 Lakh",
         "description": "Government has made a rule for all ecommerce company to collect PAN card for bill amount greater than 2 Lakhs.Add it in payment section",
@@ -10,12 +10,6 @@ export default {
             {
                 "id": "10000",
                 "filename": "seamless-mode.png",
-                "mimeType": "image/png",
-                "contentUrl": "https://samsunghack.atlassian.net/rest/api/3/attachment/content/10000"
-            },
-            {
-                "id": "10000",
-                "filename": "seamless-mode1.png",
                 "mimeType": "image/png",
                 "contentUrl": "https://samsunghack.atlassian.net/rest/api/3/attachment/content/10000"
             }
@@ -46,47 +40,47 @@ export default {
                 "created": "2025-08-08T00:13:49.628+0530"
             },
             {
-                "id": "10013",
-                "author": "Hariharan",
-                "body": "test comment",
-                "created": "2025-08-08T00:13:49.628+0530"
+                "id": "10018",
+                "author": "Gokulakrishnan M",
+                "body": "PR merged",
+                "created": "2025-08-09T14:35:34.569+0530"
             }
         ],
-        "jira_status": "To Do",
+        "jira_status": "Done",
         "type": "Story",
-        "createdAt": "2025-08-08T17:20:38.818Z",
-        "updatedAt": "2025-08-08T17:20:52.978Z",
+        "createdAt": "2025-08-09T10:59:16.196Z",
+        "updatedAt": "2025-08-09T10:59:28.878Z",
         "__v": 0,
         "ai": {
             "type": "Enhancement",
-            "summary": "Mandatory PAN entry for payments exceeding 2 Lakhs added in the payment section",
+            "summary": "Mandatory PAN entry for payments exceeding 2 Lakhs added in the payment section.",
             "doc_suggesstion": [],
             "keywords": [
                 "PAN",
                 "payment",
-                "tax"
+                "tax compliance"
             ],
             "service": "payment",
             "impact_location": "payment section",
             "is_permanent": "permanent",
-            "_id": "689631f43fdf9fbd1f36a62c"
+            "_id": "68972a10ba52ad84e7f1318d"
         }
     },
     "suggested_docs": [
         {
+            "id": "720929",
+            "title": "Pament Integration",
+            "link": "https://samsunghack.atlassian.net/wiki/spaces/DOC/pages/720929"
+        },
+        {
             "id": "688132",
             "title": "GST Details Collection in Checkout Flow for B2B E-commerce",
-            "link": "https://confluence.example.com/display/688132"
+            "link": "https://samsunghack.atlassian.net/wiki/spaces/DOC/pages/688132"
         },
         {
             "id": "753695",
             "title": "Checkout Flow",
-            "link": "https://confluence.example.com/display/753695"
-        },
-        {
-            "id": "720929",
-            "title": "Pament Integration",
-            "link": "https://confluence.example.com/display/720929"
+            "link": "https://samsunghack.atlassian.net/wiki/spaces/DOC/pages/753695"
         }
     ]
 }
