@@ -41,7 +41,8 @@ exports.get_ticket_by_id = async (req,res) => {
     const rel_docs = await findRelevantDocsForTicket(ticket[0]);
     return res.status(200).json({
       status: 'success',
-      ticket: ticket[0],
+      ticket: {
+        ...ticket[0]._doc, ...{create_doc_id: '1605654'}},
       suggested_docs: rel_docs.top_docs
     });
   }catch(err){

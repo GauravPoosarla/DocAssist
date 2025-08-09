@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { URL, type SuggestedDoc, type TicketData } from '../App';
-import { Avatar, Badge, Box, Button, CircularProgress, FormControl, FormLabel, Stack, ToggleButton, ToggleButtonGroup, Tooltip, Typography } from '@mui/material';
+import { Badge, Box, Button, CircularProgress, FormControl, FormLabel, Stack, ToggleButton, ToggleButtonGroup, Tooltip, Typography } from '@mui/material';
 import { Person } from '@mui/icons-material';
 
 type ChatProps = {
@@ -12,8 +12,6 @@ type ChatProps = {
   setTickets: (tickets: TicketData[]) => void;
 };
 
-const userNames = ['John Doe', 'Jane Smith', 'Alice Johnson'];
-
 const Chat: React.FC<ChatProps> = ({
   ticket,
   ticketDocs,
@@ -23,6 +21,7 @@ const Chat: React.FC<ChatProps> = ({
   setTickets,
 }) => {
     const [buttonLoading, setButtonLoading] = useState<boolean>(false);
+    const [isCreatingDoc, setIsCreatingDoc] = useState<boolean>(false);
     const [approved, setApproved] = useState<boolean>(false);
     const [selectedDoc, setSelectedDoc] = useState<SuggestedDoc | null>(null);
 
@@ -31,11 +30,32 @@ const Chat: React.FC<ChatProps> = ({
         // setSelectedDoc(ticketDocs[0] || '');
     }, [ticket?.id])
 
-    const handleCopySummary = () => {
-        if (ticket?.ai?.summary) {
-            navigator.clipboard.writeText(ticket?.ai?.summary)
-            .then(() => {
-                alert('Summary copied!');
+    const triggerApprove = async (id: string) => {
+        try {
+                const response = await fetch(`${URL}/tickets/${ticket?.id}/${id}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                });
+                if (response.ok) {
+                    setApproved(true);
+                    const filteredTickets: any = tickets.map((_) => {
+                        if(_.id === ticket.id) return {..._, status: 'approved'}
+                        else return _
+                    })
+                    setTickets(filteredTickets);
+                } else {
+                    alert('Approval failed');
+                }
+            } catch (error) {
+                alert('Approval failed');
+            }
+    }
+
+    const handleCreate = () => {
+        if (ticket?.create_doc_id) {
+            setIsCreatingDoc(true)
+            triggerApprove(ticket?.create_doc_id).then(() =>{}).finally(() => {
+                setIsCreatingDoc(false)
             })
         }
     };
@@ -59,25 +79,10 @@ const Chat: React.FC<ChatProps> = ({
             //     setTickets(filteredTickets);
             //     setButtonLoading(false);
             // }, (2000))
-            try {
-                const response = await fetch(`${URL}/tickets/${ticket?.id}/${selectedDoc?.id}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+            if (selectedDoc?.id) {
+                triggerApprove(selectedDoc?.id).then(() =>{}).finally(() => {
+                    setButtonLoading(false)
                 });
-                if (response.ok) {
-                    setApproved(true);
-                    const filteredTickets: any = tickets.map((_) => {
-                        if(_.id === ticket.id) return {..._, status: 'approved'}
-                        else return _
-                    })
-                    setTickets(filteredTickets);
-                } else {
-                    alert('Approval failed');
-                }
-            } catch (error) {
-                alert('Approval failed');
-            } finally{
-                setButtonLoading(false);
             }
         }
     };
@@ -173,8 +178,8 @@ const Chat: React.FC<ChatProps> = ({
                     </FormControl>
                 )}
                 <Stack direction="row" spacing={2}  sx={{ mt: 2 }}>
-                <Button variant="outlined" onClick={handleCopySummary}>
-                    Copy Summary
+                <Button variant="outlined" onClick={handleCreate} disabled={!ticket?.create_doc_id || approved} startIcon={isCreatingDoc ? <CircularProgress size={20} color="inherit" /> : null}>
+                    Create Document
                 </Button>
                 <Button
                     variant="contained"
@@ -183,7 +188,7 @@ const Chat: React.FC<ChatProps> = ({
                     disabled={buttonLoading || !selectedDoc?.id}
                     startIcon={buttonLoading ? <CircularProgress size={20} color="inherit" /> : null}
                 >
-                    {approved ? "Approved" : "Approve"}
+                    {approved ? "Approved" : "Approve change"}
                 </Button>
                 </Stack>
             </Box>              

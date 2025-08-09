@@ -2,6 +2,7 @@ const express = require('express');
 const cron = require('node-cron');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 dotenv.config();
 
@@ -14,6 +15,8 @@ const documentRoute = require('./routes/documentRoutes');
 const db = process.env.DB_URL;
 mongoose.connect(db).then(()=> console.log('db is connected')).catch(err => console.log('unable to connect db'));
 const app = express();
+app.use(cors());
+
 app.use(express.json());
 
 app.use('/api/tickets', ticketsRoute);

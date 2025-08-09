@@ -11,8 +11,8 @@ import {
 } from '@mui/material';
 import Tickets from './Pages/Tickets';
 import Chat from './Pages/Chat';
-import ticketsData from './data/tickets';
-import ticketData from './data/ticket';
+// import ticketsData from './data/tickets';
+// import ticketData from './data/ticket';
 
 export type TicketData = {
     attachments: string[]
@@ -156,7 +156,6 @@ function App() {
                 )}
                       </Container>              
             </Typography>
-            {/* Add your right panel content here */}
           </Box>
         </Box>
       </Container>

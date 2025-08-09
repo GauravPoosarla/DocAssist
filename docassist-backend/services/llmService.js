@@ -173,7 +173,7 @@ async function findRelevantDocsForTicket(ticket) {
 
   const docs = await Document.find();
   const docsList = docs.map((doc, i) => 
-    `${i+1}. ID: ${doc.id}, Title: "${doc.title}", Summary: "${doc.summary}"`
+    `${i+1}. ID: ${doc.id}, Title: "${doc.title}", Summary: "${doc.summary}", Link: "${doc.link}"`
   ).join("\n");
 
   const prompt = `
