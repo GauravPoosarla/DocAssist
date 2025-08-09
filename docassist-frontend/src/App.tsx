@@ -47,48 +47,48 @@ function App() {
   const [isTicketFetching, setIsTicketFetching] = useState<boolean>(true);
 
   const getAllTickets = async () => {
-    setIstFetching(true);
-    const data = ticketsData;
-    setTickets(data?.data);
-    getTicketById(data?.data[0]?.id)
-    setIstFetching(false);
-    // try {
-    //   const response = await fetch(`${URL}/tickets/`);
-    //   if (response.ok) {
-    //     const data = await response.json();
-    //     setTickets(data?.data);
-    //     getTicketById(data?.data[0]?.id)
-    //   } else {
-    //     console.error('Failed to fetch tickets');
-    //   }
-    // } catch (error) {
-    //   console.error('Error fetching tickets:', error);
-    // } finally {
-    //   setIstFetching(false);
-    // }
+    // setIstFetching(true);
+    // const data = ticketsData;
+    // setTickets(data?.data);
+    // getTicketById(data?.data[0]?.id)
+    // setIstFetching(false);
+    try {
+      const response = await fetch(`${URL}/tickets/`);
+      if (response.ok) {
+        const data = await response.json();
+        setTickets(data?.data);
+        getTicketById(data?.data[0]?.id)
+      } else {
+        console.error('Failed to fetch tickets');
+      }
+    } catch (error) {
+      console.error('Error fetching tickets:', error);
+    } finally {
+      setIstFetching(false);
+    }
   }
 
   const getTicketById = async (id: string) => {
     if (id !== selectedTicket?.id) {
       setIsTicketFetching(true);
-      setSelectedTicket(ticketData?.ticket)
-      setSelectedTicketDocs(ticketData?.suggested_docs)
-      setIsTicketFetching(false);
-      // try {
-      //   const response = await fetch(`${URL}/tickets/${id}`);
-      //   if (response.ok) {
-      //     const data = await response.json();
-      //     setSelectedTicket(data?.ticket)
-      //     setSelectedTicketDocs(data?.suggested_docs[0])
-      //     // setSelectedChannel(ChannelsData[0])
-      //   } else {
-      //     console.error('Failed to fetch tickets');
-      //   }
-      // } catch (error) {
-      //   console.error('Error fetching tickets:', error);
-      // } finally {
-      //   setIsTicketFetching(false);
-      // }
+      // setSelectedTicket(ticketData?.ticket)
+      // setSelectedTicketDocs(ticketData?.suggested_docs)
+      // setIsTicketFetching(false);
+      try {
+        const response = await fetch(`${URL}/tickets/${id}`);
+        if (response.ok) {
+          const data = await response.json();
+          setSelectedTicket(data?.ticket)
+          setSelectedTicketDocs(data?.suggested_docs[0])
+          // setSelectedChannel(ChannelsData[0])
+        } else {
+          console.error('Failed to fetch tickets');
+        }
+      } catch (error) {
+        console.error('Error fetching tickets:', error);
+      } finally {
+        setIsTicketFetching(false);
+      }
     }
   }
 
