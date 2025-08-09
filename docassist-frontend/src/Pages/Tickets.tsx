@@ -11,22 +11,16 @@ import {
   Chip
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import type { ChannelData } from '../App';
+import type { TicketData } from '../App';
 
 type ChannelProps = {
-  selectedId: string;
-  onSelect: (channel: ChannelData) => void;
+  tickets: TicketData[];
+  selectedTicket: TicketData | null;
+  onSelect: (ticketId: string) => void;
   isFetching: boolean;
-  setSelectedChannel: (channel: ChannelData) => void;
-  setIsChannelFetching: (isFetching: boolean) => void;
-  setChannelDeleting: (isDeleting: boolean) => void
-  channelsArray: ChannelData[];
 };
 
-const Channel: React.FC<ChannelProps> = ({ selectedId, onSelect, isFetching, setSelectedChannel, setChannelDeleting, channelsArray }) => {
-  const [channels, setChannels] = useState<ChannelData[]>(channelsArray);
-
-  const statusColor = (status: string) => {
+const statusColor = (status: string) => {
   switch (status) {
     case 'approved':
       return 'success';
@@ -41,13 +35,16 @@ const Channel: React.FC<ChannelProps> = ({ selectedId, onSelect, isFetching, set
   }
 };
 
-useEffect(() => {
-    setChannels(channelsArray);
-}, [channelsArray.length]);
-
+const Tickets: React.FC<ChannelProps> = ({
+  tickets,
+  selectedTicket,
+  onSelect,
+  isFetching,
+}) => {
+  
   return isFetching ? (
     <Box display="flex" justifyContent="center" alignItems="center" height="100%">
-      <Typography variant="h6">Fetching channels...</Typography>
+      <Typography variant="h6">Fetching tickets...</Typography>
     </Box>
   ) : (
     <Box>
@@ -56,23 +53,15 @@ useEffect(() => {
             Tickets
           </Typography>
         </Toolbar>
-        {(channels || []).length ? (
+        {(tickets || []).length ? (
             <List sx={{ overflowY: 'auto'}}>
-        {channels.map((channel) => (
+        {tickets.map((ticket) => (
           <ListItem
-            key={channel.id}
+            key={ticket.id}
             secondaryAction={
-            //   <IconButton edge="end" onClick={(e) => {
-            //     e.preventDefault();
-            //     e.stopPropagation();
-            //     handleDelete(channel.id)}
-            //   } 
-            //   >
-            //     <DeleteIcon />
-            //   </IconButton>
               <Chip
-                  label={channel.status}
-                  color={statusColor(channel.status)}
+                  label={ticket.status}
+                  color={statusColor(ticket.status)}
                   size="small"
                   sx={{ minWidth: 80, textTransform: 'capitalize', fontWeight: 500, borderRadius: '8px', padding: '8px 12px', }}
                 />
@@ -80,12 +69,12 @@ useEffect(() => {
             sx={{ 
                 ":hover" : { backgroundColor: '#ffffff', cursor: 'pointer' }, 
                 padding:'6px 18px', 
-                backgroundColor: selectedId === channel.id ? '#ffffff' : ''
+                backgroundColor: selectedTicket?.id === ticket.id ? '#ffffff' : ''
             }}
-            onClick={() => onSelect(channel)}
+            onClick={() => onSelect(ticket?.id)}
           >
             <ListItemText
-                primary={channel.title}
+                primary={ticket.title}
                 primaryTypographyProps={{
                     sx: {
                     whiteSpace: 'nowrap',
@@ -108,4 +97,4 @@ useEffect(() => {
   );
 };
 
-export default Channel;
+export default Tickets;
