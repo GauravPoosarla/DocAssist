@@ -1,4 +1,4 @@
-{
+export default {
     "status": "success",
     "ticket": {
         "_id": "689631e63fdf9fbd1f36a615",
@@ -10,6 +10,12 @@
             {
                 "id": "10000",
                 "filename": "seamless-mode.png",
+                "mimeType": "image/png",
+                "contentUrl": "https://samsunghack.atlassian.net/rest/api/3/attachment/content/10000"
+            },
+            {
+                "id": "10000",
+                "filename": "seamless-mode1.png",
                 "mimeType": "image/png",
                 "contentUrl": "https://samsunghack.atlassian.net/rest/api/3/attachment/content/10000"
             }
@@ -37,6 +43,12 @@
                 "id": "10012",
                 "author": "Soorya Venkat",
                 "body": "mocks attached",
+                "created": "2025-08-08T00:13:49.628+0530"
+            },
+            {
+                "id": "10013",
+                "author": "Hariharan",
+                "body": "test comment",
                 "created": "2025-08-08T00:13:49.628+0530"
             }
         ],
