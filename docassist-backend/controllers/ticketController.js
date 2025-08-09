@@ -65,6 +65,7 @@ exports.update_document = async (req, res) => {
     };
 
     await updateConfluencePageWithTicket(config, doc_id, ticket[0]);
+    await Ticket.findByIdAndUpdate({_id: ticket[0]._id}, { $set: { status: 'approved'} }, { new: true });
     return res.status(200).json({
       status: 'success',
       message: 'document updated successfully'
