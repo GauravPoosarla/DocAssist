@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { URL, type SuggestedDoc, type TicketData } from '../App';
-import { Badge, Box, Button, CircularProgress, FormControl, FormLabel, Stack, ToggleButton, ToggleButtonGroup, Tooltip, Typography } from '@mui/material';
+import { Avatar, Badge, Box, Button, CircularProgress, FormControl, FormLabel, Stack, ToggleButton, ToggleButtonGroup, Tooltip, Typography } from '@mui/material';
 import { Person } from '@mui/icons-material';
 
 type ChatProps = {
@@ -60,7 +60,7 @@ const Chat: React.FC<ChatProps> = ({
             //     setButtonLoading(false);
             // }, (2000))
             try {
-                const response = await fetch(`${URL}/tickets//${ticket?.id}/${selectedDoc?.id}`, {
+                const response = await fetch(`${URL}/tickets/${ticket?.id}/${selectedDoc?.id}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                 });
@@ -82,6 +82,14 @@ const Chat: React.FC<ChatProps> = ({
         }
     };
 
+    const getCommentUsers = () => {
+        const users: string[] = [];
+        (ticket?.comments || []).forEach((comment: any) => {
+            comment.author && !users.includes(comment.author) && users.push(comment.author);
+        })
+        return users;
+    }
+
     return (
         <>
         {ticket?.id ? (
@@ -90,10 +98,11 @@ const Chat: React.FC<ChatProps> = ({
                     <Typography variant="h5" gutterBottom>
                     {ticket.title}
                     </Typography>
+                    {(getCommentUsers() || []).length ? (
                     <Tooltip
                         title={
                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                                {userNames.map((name, index) => (
+                                {(getCommentUsers() || [])?.map((name, index) => (
                                     <Typography variant="caption" color="inherit" key={index}>
                                         {name}
                                     </Typography>
@@ -104,15 +113,34 @@ const Chat: React.FC<ChatProps> = ({
                         arrow
                         sx={{ backgroundColor: 'transparent', height: '50px', width: '50px', fontSize: 'large', padding: '8px'  }}
                     >
-                        <Badge badgeContent={'2'} color="primary" max={99} sx={{ cursor: 'pointer' }}>
+                        <Badge badgeContent={(getCommentUsers() || []).length} color="primary" max={99} sx={{ cursor: 'pointer' }}>
                             <Person color="action" fontSize='large' />
                         </Badge>
                     </Tooltip>
+                    ) : null}
                 </Box>
 
                 <Typography variant="body1" color="text.secondary" gutterBottom>
                     {ticket?.ai?.summary || "No AI suggested summary available."}
                 </Typography>
+                {(ticket?.attachments || []).length > 0 ? (
+                    <>
+                    <Typography sx={{mt: 2}}>Attachments available</Typography>
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mb: 2 }}>
+                        {(ticket?.attachments || []).map((attachment: any, index: number) => (
+                            <>
+                                <img 
+                                    src="https://cdn-icons-png.flaticon.com/512/1829/1829586.png" 
+                                    alt="Add Image" 
+                                    width="20" 
+                                    height="20"
+                                />
+                                <Typography>{attachment.filename}</Typography>
+                            </>
+                        ))}
+                    </Box>
+                    </>
+                ) : null}
                 {Array.isArray(ticketDocs) && (ticketDocs || [])?.length > 0 && (
                     <FormControl component="fieldset" sx={{ my: 2, width: '100%' }}>
                     <FormLabel component="legend" sx={{mb: 2}}>AI suggested Documents</FormLabel>
