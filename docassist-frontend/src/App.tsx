@@ -79,7 +79,7 @@ function App() {
         if (response.ok) {
           const data = await response.json();
           setSelectedTicket(data?.ticket)
-          setSelectedTicketDocs(data?.suggested_docs[0])
+          setSelectedTicketDocs(data?.suggested_docs)
           // setSelectedChannel(ChannelsData[0])
         } else {
           console.error('Failed to fetch tickets');
@@ -133,14 +133,14 @@ function App() {
             <Typography variant="h5" gutterBottom>
               <Container>
                 {!isFetching && !isTicketFetching&& tickets.length > 0 ? (
-                        <Chat 
-                          ticket={selectedTicket}
-                          ticketDocs={selectedTicketDocs}
-                          isFetching={isFetching}
-                          isTicketFetching={isTicketFetching}
-                          tickets={tickets}
-                          setTickets={setTickets}
-                        />
+                    <Chat 
+                      ticket={selectedTicket}
+                      ticketDocs={selectedTicketDocs}
+                      isFetching={isFetching}
+                      isTicketFetching={isTicketFetching}
+                      tickets={tickets}
+                      setTickets={setTickets}
+                    />
                 ): (
                   <>
                   {isTicketFetching ? (
