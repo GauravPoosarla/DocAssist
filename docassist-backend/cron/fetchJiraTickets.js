@@ -10,15 +10,7 @@ const config = {
   projectKey: process.env.JIRA_PROJECT_KEY || "DOCASSIST",
 };
 
-// const TICKETS_PATH = path.join(__dirname, "../data/tickets.json");
-
-/* function loadTickets() {
-  if (!fs.existsSync(TICKETS_PATH)) return [];
-  return JSON.parse(fs.readFileSync(TICKETS_PATH, "utf-8"));
-} */
-
 async function saveTickets(tickets) {
-  // fs.writeFileSync(TICKETS_PATH, JSON.stringify(tickets, null, 2));
   await Ticket.create(tickets);
 }
 
@@ -26,7 +18,6 @@ async function fetchAndStoreJiraTickets() {
 
   const jiraTickets = await fetchJiraTickets(config);
 
-  // const existing = loadTickets();
   const existing = await Ticket.find();
   const existingIds = new Set(existing.map(t => t.id));
 
