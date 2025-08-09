@@ -27,10 +27,10 @@ async function fetchAndStoreJiraTickets() {
   const jiraTickets = await fetchJiraTickets(config);
 
   // const existing = loadTickets();
-  const existing = await Ticket.find();
+  const existing = await Ticket.find({type: 'Story'}, {jira_status: 'Done'});
   const existingIds = new Set(existing.map(t => t.id));
 
-  const newOnes = jiraTickets.filter(t => !existingIds.has(t.id));
+  const newOnes = jiraTickets.filter(t => !existingIds.has(t.id) && t.jira_status === 'Done' && t.type === 'Story');
   if (newOnes.length) {
     console.log(`Found ${newOnes.length} new tickets`);
     saveTickets([...newOnes]);
