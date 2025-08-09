@@ -1,52 +1,80 @@
 {
     "status": "success",
-    "data": [
-        {
-            "_id": "68970d985770da72092fe19c",
-            "id": "DOCASSIST-6",
-            "title": "Issue in inventory check logic",
-            "description": "Reference order:#123456#789012There was 2 inventory available for SKU: ABC Partner created the cart with 2 units and successfully placed order.Order created and  2 units being soft allocated now net available inventory is 0 for SKU:ABCThink if partner not able to proceed payment due to payment page error. Now net available inventory becomes zero. so when partner again tries to place order partner cant since the inventory has become zero. Solution: Check inventory during order creation (to soft allocate) but do not check inventory at payment page during the time of partner payment",
-            "status": "processed",
-            "attachments": [],
-            "comments": [
-                {
-                    "id": "10006",
-                    "author": "Soorya Venkat",
-                    "body": "Pls confirm if serviceability check is required or not ?",
-                    "created": "2025-08-08T00:07:48.337+0530"
-                },
-                {
-                    "id": "10007",
-                    "author": "Soorya Venkat",
-                    "body": "For partner journey no need to check serviceability check",
-                    "created": "2025-08-08T00:08:25.140+0530"
-                },
-                {
-                    "id": "10008",
-                    "author": "Soorya Venkat",
-                    "body": "QA testing passed for this enhancement hence deploying to PROD",
-                    "created": "2025-08-08T00:08:48.155+0530"
-                }
-            ],
-            "jira_status": "Done",
-            "type": "Story",
-            "createdAt": "2025-08-09T08:58:00.229Z",
-            "updatedAt": "2025-08-09T08:58:04.165Z",
-            "__v": 0,
-            "ai": {
-                "type": "Enhancement",
-                "summary": "Inventory check logic updated to avoid checking inventory during payment processing.",
-                "doc_suggesstion": [],
-                "keywords": [
-                    "inventory",
-                    "order",
-                    "payment"
-                ],
-                "service": "fulfillment",
-                "impact_location": "Order creation and payment processing",
-                "is_permanent": "permanent",
-                "_id": "68970d9c5770da72092fe19f"
+    "ticket": {
+        "_id": "689631e63fdf9fbd1f36a615",
+        "id": "DOCASSIST-7",
+        "title": "Make PAN entry mandatory for all payment greater than 2 Lakh",
+        "description": "Government has made a rule for all ecommerce company to collect PAN card for bill amount greater than 2 Lakhs.Add it in payment section",
+        "status": "processed",
+        "attachments": [
+            {
+                "id": "10000",
+                "filename": "seamless-mode.png",
+                "mimeType": "image/png",
+                "contentUrl": "https://samsunghack.atlassian.net/rest/api/3/attachment/content/10000"
             }
+        ],
+        "comments": [
+            {
+                "id": "10009",
+                "author": "Soorya Venkat",
+                "body": "Can we add it under address section ? ",
+                "created": "2025-08-08T00:12:28.188+0530"
+            },
+            {
+                "id": "10010",
+                "author": "Soorya Venkat",
+                "body": "No. It has to be at payment section since there could be some cashback so total price may reduce and come less than 2 Lakhs so user doesn't need to give PAN.",
+                "created": "2025-08-08T00:13:16.984+0530"
+            },
+            {
+                "id": "10011",
+                "author": "Soorya Venkat",
+                "body": "Understood. Can you please share mock for this",
+                "created": "2025-08-08T00:13:31.307+0530"
+            },
+            {
+                "id": "10012",
+                "author": "Soorya Venkat",
+                "body": "mocks attached",
+                "created": "2025-08-08T00:13:49.628+0530"
+            }
+        ],
+        "jira_status": "To Do",
+        "type": "Story",
+        "createdAt": "2025-08-08T17:20:38.818Z",
+        "updatedAt": "2025-08-08T17:20:52.978Z",
+        "__v": 0,
+        "ai": {
+            "type": "Enhancement",
+            "summary": "Mandatory PAN entry for payments exceeding 2 Lakhs added in the payment section",
+            "doc_suggesstion": [],
+            "keywords": [
+                "PAN",
+                "payment",
+                "tax"
+            ],
+            "service": "payment",
+            "impact_location": "payment section",
+            "is_permanent": "permanent",
+            "_id": "689631f43fdf9fbd1f36a62c"
+        }
+    },
+    "suggested_docs": [
+        {
+            "id": "688132",
+            "title": "GST Details Collection in Checkout Flow for B2B E-commerce",
+            "link": "https://confluence.example.com/display/688132"
+        },
+        {
+            "id": "753695",
+            "title": "Checkout Flow",
+            "link": "https://confluence.example.com/display/753695"
+        },
+        {
+            "id": "720929",
+            "title": "Pament Integration",
+            "link": "https://confluence.example.com/display/720929"
         }
     ]
 }
