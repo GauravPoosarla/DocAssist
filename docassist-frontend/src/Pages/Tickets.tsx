@@ -69,7 +69,7 @@ const Tickets: React.FC<ChannelProps> = ({
                 />
             }
             sx={{ 
-                ":hover" : { backgroundColor: '#ffffff', cursor: 'pointer' }, 
+                ":hover" : !isTicketFetching ? { backgroundColor: '#ffffff', cursor: 'pointer' } : '', 
                 padding:'6px 18px', 
                 backgroundColor: selectedTicket?.id === ticket.id ? '#ffffff' : ''
             }}
