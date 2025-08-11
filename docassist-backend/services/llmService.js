@@ -276,10 +276,47 @@ let prompt = `
   }
 }
 
+async function findRelevantDocsForTicketFromEmbeddings(ticket) {
+  const docs = JSON.parse(fs.readFileSync("./data/vector_store.json", "utf-8"));
+
+  const extractor = await pipeline("feature-extraction", "Xenova/all-MiniLM-L6-v2");
+
+  const ticketText = `
+    Title: ${ticket.title}
+    Description: ${ticket.description}
+    ${ticket.attachmentsText || ""}
+  `;
+
+  const ticketEmbeddingOutput = await extractor(ticketText, { pooling: "mean", normalize: true });
+  const ticketEmbedding = Array.from(ticketEmbeddingOutput.data);
+
+  const scoredDocs = docs.map(doc => ({
+    ...doc,
+    similarity: cosineSimilarity(ticketEmbedding, doc.embedding)
+  }));
+
+  scoredDocs.sort((a, b) => b.similarity - a.similarity);
+
+  return scoredDocs.slice(0, 3);
+}
+
+function cosineSimilarity(vecA, vecB) {
+  let dot = 0.0;
+  let normA = 0.0;
+  let normB = 0.0;
+  for (let i = 0; i < vecA.length; i++) {
+    dot += vecA[i] * vecB[i];
+    normA += vecA[i] * vecA[i];
+    normB += vecB[i] * vecB[i];
+  }
+  return dot / (Math.sqrt(normA) * Math.sqrt(normB));
+}
+
 module.exports = {
   classifyTicket,
   summarizeConfluenceDoc,
   findRelevantDocsForTicket,
-  generateUpdatedConfluenceHtml
+  generateUpdatedConfluenceHtml,
+  findRelevantDocsForTicketFromEmbeddings
 };
 
