@@ -216,30 +216,31 @@ Please identify the 3 most relevant documents to this ticket and return JSON lik
   return JSON.parse(cleaned);
 }
 
-async function generateUpdatedConfluenceHtml(currentContent, ticket, attachmentsHtml) {
-  const prompt = `
-You are an assistant that updates Confluence documentation.
+async function generateUpdatedConfluenceHtml(currentContent, ticket, attachmentsHtml, pageId) {
+let prompt = `
+    You are an assistant that updates Confluence documentation.
+    
+    Given the current HTML content of a page and a Jira ticket, 
+    return ONLY the updated HTML where:
+    1. Relevant changes from the ticket are highlighted using <span style="background-color: yellow">...</span>.
+    2. If the ticket requires replacing text, strike through ONLY the outdated words/phrases (<s>...</s>) and place the updated text immediately after them inside the same sentence — do NOT duplicate the full original sentence.
+    3. Do NOT repeat the old content again after striking it through.
+    4. Keep the rest of the document exactly as it is — do not reflow paragraphs or remove unrelated content.
+    5. Do NOT modify or reword unchanged text.
+    6. Keep all HTML valid and Confluence-compatible.
+    7. If replacing a value (numbers, codes, names, dates, etc.):
+      - Keep the original value wrapped in <del>old value</del>
+      - Immediately after, add the new value wrapped in <span style="background-color: yellow">new value</span>
+    
+    Current HTML:
+    ${currentContent}
+    
+    Ticket ID: ${ticket.id}
+    Title: ${ticket.title}
+    Description: ${ticket.description}
+    ${attachmentsHtml ? `Attachments: ${attachmentsHtml}` : ""}
+    `;
 
-Given the current HTML content of a page and a Jira ticket, 
-return ONLY the updated HTML where:
-1. Relevant changes from the ticket are highlighted using <span style="background-color: yellow">...</span>.
-2. If the ticket requires replacing text, strike through ONLY the outdated words/phrases (<s>...</s>) and place the updated text immediately after them inside the same sentence — do NOT duplicate the full original sentence.
-3. Do NOT repeat the old content again after striking it through.
-4. Keep the rest of the document exactly as it is — do not reflow paragraphs or remove unrelated content.
-5. Do NOT modify or reword unchanged text.
-6. Keep all HTML valid and Confluence-compatible.
-7. If replacing a value (numbers, codes, names, dates, etc.):
-   - Keep the original value wrapped in <del>old value</del>
-   - Immediately after, add the new value wrapped in <span style="background-color: yellow">new value</span>
-
-Current HTML:
-${currentContent}
-
-Ticket ID: ${ticket.id}
-Title: ${ticket.title}
-Description: ${ticket.description}
-${attachmentsHtml ? `Attachments: ${attachmentsHtml}` : ""}
-`;
 
   try {
     const llmRes = await axios.post(

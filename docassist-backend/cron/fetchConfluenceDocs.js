@@ -20,7 +20,7 @@ async function fetchAndStoreConfluenceDocs() {
     const processedDocs = [...existing];
 
     for (const page of pages) {
-      if (!existingIds.has(page.id)) {
+      if (!existingIds.has(page.id) && page.id !== "1605654") {
         console.log(`Summarizing new doc: ${page.title}`);
         const summaryData = await summarizeConfluenceDoc(page);
 
@@ -38,6 +38,7 @@ async function fetchAndStoreConfluenceDocs() {
     console.log(`Total docs stored: ${processedDocs.length}`);
   } catch (err) {
     console.error("Error fetching/summarizing Confluence docs:", err.message);
+    throw err;
   }
 }
 
