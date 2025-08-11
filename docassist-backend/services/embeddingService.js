@@ -12,3 +12,4 @@ for (let doc of docs) {
 
 fs.writeFileSync("./data/vector_store.json", JSON.stringify(docs, null, 2));
 console.log("Vector store created.");
+
