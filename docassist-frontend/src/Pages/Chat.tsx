@@ -146,6 +146,10 @@ const Chat: React.FC<ChatProps> = ({
                     </Box>
                     </>
                 ) : null}
+                {approved ? (
+                    <Typography sx={{mt: 2}}>You already approved this ticket !</Typography>
+                ) : (
+                    <>
                 {Array.isArray(ticketDocs) && (ticketDocs || [])?.length > 0 && (
                     <FormControl component="fieldset" sx={{ my: 2, width: '100%' }}>
                     <FormLabel component="legend" sx={{mb: 2}}>AI suggested Documents</FormLabel>
@@ -176,6 +180,8 @@ const Chat: React.FC<ChatProps> = ({
                         ))}
                         </ToggleButtonGroup>
                     </FormControl>
+                )}
+                </>
                 )}
                 <Stack direction="row" spacing={2}  sx={{ mt: 2 }}>
                 <Button variant="outlined" onClick={handleCreate} disabled={!ticket?.create_doc_id || approved} startIcon={isCreatingDoc ? <CircularProgress size={20} color="inherit" /> : null}>

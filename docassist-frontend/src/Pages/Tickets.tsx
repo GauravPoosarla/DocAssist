@@ -18,6 +18,7 @@ type ChannelProps = {
   selectedTicket: TicketData | null;
   onSelect: (ticketId: string) => void;
   isFetching: boolean;
+  isTicketFetching: boolean;
 };
 
 const statusColor = (status: string) => {
@@ -40,6 +41,7 @@ const Tickets: React.FC<ChannelProps> = ({
   selectedTicket,
   onSelect,
   isFetching,
+  isTicketFetching,
 }) => {
   
   return isFetching ? (
@@ -71,7 +73,7 @@ const Tickets: React.FC<ChannelProps> = ({
                 padding:'6px 18px', 
                 backgroundColor: selectedTicket?.id === ticket.id ? '#ffffff' : ''
             }}
-            onClick={() => onSelect(ticket?.id)}
+            onClick={() => !isTicketFetching ? onSelect(ticket?.id) : null}
           >
             <ListItemText
                 primary={ticket.title}

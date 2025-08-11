@@ -126,6 +126,7 @@ function App() {
                 selectedTicket={selectedTicket}
                 onSelect={getTicketById}
                 isFetching={isFetching}
+                isTicketFetching={isTicketFetching}
                />
             </Typography>
           </Box>
