@@ -58,12 +58,15 @@ async function updateConfluencePageWithTicket(config, pageId, ticket) {
       }
     });
   }
-
-  const updatedHtmlWithHighlights = await generateUpdatedConfluenceHtml(
-    currentContent,
-    ticket,
-    attachmentsHtml
-  );
+  let updatedHtmlWithHighlights;
+  if(pageId !== '1605654') {
+  updatedHtmlWithHighlights = await generateUpdatedConfluenceHtml(
+      currentContent,
+      ticket,
+      attachmentsHtml,
+      pageId
+    );
+  }
 
   const timestamp = new Date().toLocaleString("en-US", {
     year: "numeric",
@@ -75,13 +78,13 @@ async function updateConfluencePageWithTicket(config, pageId, ticket) {
   });
 
   const finalUpdatedContent = `
-    ${updatedHtmlWithHighlights}
+    ${pageId === '1605654' ? currentContent : updatedHtmlWithHighlights}
     <hr/>
     <h3>Docassist updated relevant tickets</h3>
     <p><b>Updated On:</b> ${timestamp}</p>
     <p><b>Ticket:</b> ${ticket.id}</p>
     <p><b>Title:</b> ${ticket.title}</p>
-    <p><b>Description:</b> ${ticket.description}</p>
+    ${pageId !== '1605654' ? `<p><b>Description:</b> ${ticket.description}</p>` : `<p><b>Summary:</b> ${ticket.ai.summary}</p>`} 
     ${attachmentsHtml}
   `;
 
