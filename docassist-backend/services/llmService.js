@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const Tesseract = require("tesseract.js");
 const Document = require("../models/documentModel");
+const { pipeline } = require("@xenova/transformers");
 require("dotenv").config();
 
 async function fetchTextAttachmentContent(contentUrl, auth) {
