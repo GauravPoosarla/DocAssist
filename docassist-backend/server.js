@@ -24,7 +24,7 @@ app.use('/api/tickets', ticketsRoute);
 app.use('/api/documents', documentRoute);
 
 
-cron.schedule('*/2 * * * *', async () => {
+cron.schedule('*/1 * * * *', async () => {
   try {
     console.log("Fetch Jira cron started");
     await fetchAndStoreJiraTickets();
@@ -52,7 +52,7 @@ cron.schedule('*/2 * * * *', async () => {
 //   })
 // })
 
-cron.schedule('*/3 * * * *', async () => {
+cron.schedule('*/2 * * * *', async () => {
   try {
     console.log("Process Jira cron started");
     await processPendingTickets();
@@ -62,15 +62,15 @@ cron.schedule('*/3 * * * *', async () => {
   }
 });
 
-cron.schedule('*/2 * * * *', async () => {
-  try {
-    console.log("Document fetch cron started");
-    await fetchAndStoreConfluenceDocs();
-    console.log("Documents fetch cron completed");
-  } catch (err) {
-    console.error("Documents fetch cron failed:", err.message);
-  }
-});
+// cron.schedule('*/2 * * * *', async () => {
+//   try {
+//     console.log("Document fetch cron started");
+//     await fetchAndStoreConfluenceDocs();
+//     console.log("Documents fetch cron completed");
+//   } catch (err) {
+//     console.error("Documents fetch cron failed:", err.message);
+//   }
+// });
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
