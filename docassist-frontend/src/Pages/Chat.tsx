@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { URL, type SuggestedDoc, type TicketData } from '../App';
-import { Badge, Box, Button, CircularProgress, FormControl, FormLabel, Stack, ToggleButton, ToggleButtonGroup, Tooltip, Typography } from '@mui/material';
+import { Badge, Box, Button, CircularProgress, FormControl, FormLabel, Link, Stack, ToggleButton, ToggleButtonGroup, Tooltip, Typography } from '@mui/material';
 import { Person } from '@mui/icons-material';
+import InsertLinkIcon from '@mui/icons-material/InsertLink';
 
 type ChatProps = {
   ticket: any;
@@ -95,6 +96,15 @@ const Chat: React.FC<ChatProps> = ({
         return users;
     }
 
+    const redirectLnk = (doc: any) => {
+        if (doc?.link) {
+            const newLink = document.createElement("a");
+            newLink.href = doc?.link;
+            newLink.target = "_blank";
+            newLink.click();
+        }
+    }
+
     return (
         <>
         {ticket?.id ? (
@@ -162,9 +172,12 @@ const Chat: React.FC<ChatProps> = ({
                         sx={{width: '60%', marginTop: '12 px'}}
                         >
                             {ticketDocs.map((doc, idx) => (
+                                <>
                             <ToggleButton 
                                 key={idx}
                                 sx={{ 
+                                    display: 'flex',
+                                    gap: '12px',
                                     backgroundColor: selectedDoc?.id === doc?.id ? '#0747a6' :'transparent',
                                     color: selectedDoc?.id === doc?.id ? '#ffffff' : '#000000',
                                     borderRadius: '8px',
@@ -176,7 +189,9 @@ const Chat: React.FC<ChatProps> = ({
                                 value={doc?.id}
                             >
                                 {doc?.title}
+                                <InsertLinkIcon onClick={() => redirectLnk(doc)} />
                             </ToggleButton>
+                            </>
                         ))}
                         </ToggleButtonGroup>
                     </FormControl>
